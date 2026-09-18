@@ -31,9 +31,7 @@ function ToastPlayground() {
               id="message"
               className={styles.messageInput}
               value={message}
-              onChange={(event) => {
-                setMessage(event.target.value);
-              }}
+              onChange={(event) => setMessage(event.target.value)}
             />
           </div>
         </div>
@@ -54,9 +52,7 @@ function ToastPlayground() {
                     name="variant"
                     value={option}
                     checked={option === variant}
-                    onChange={(event) => {
-                      setVariant(event.target.value);
-                    }}
+                    onChange={() => setVariant(option)}
                   />
                   {option}
                 </label>
