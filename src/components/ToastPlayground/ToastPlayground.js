@@ -27,7 +27,7 @@ function ToastPlayground() {
       {showToast && (
         <Toast
           variant={variant}
-          handleDismiss={() => setShowToast(false)}
+          onDismiss={() => setShowToast(false)}
         >
           {message}
         </Toast>
