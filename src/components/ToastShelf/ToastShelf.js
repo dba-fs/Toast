@@ -16,7 +16,11 @@ function ToastShelf() {
       aria-label="Notification"
     >
       {toasts.map((toast) => (
-        <li key={toast.id} className={styles.toastWrapper}>
+        <li
+          key={toast.id}
+          className={styles.toastWrapper}
+          aria-atomic="true"
+        >
           <Toast
             variant={toast.variant}
             onDismiss={() => dismissToast(toast.id)}

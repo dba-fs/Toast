@@ -27,8 +27,7 @@ function Toast({ variant, onDismiss, children }) {
         <Icon size={24} aria-hidden="true" />
       </div>
       <p className={styles.content}>
-        <VisuallyHidden>{variant} -</VisuallyHidden>
-        {children}
+        <VisuallyHidden>{variant} -</VisuallyHidden> {children}
       </p>
       <button
         className={styles.closeButton}
