@@ -15,9 +15,11 @@ function ToastPlayground() {
   function handleSubmit(event) {
     event.preventDefault();
 
+    const id = crypto.randomUUID();
+
     setToasts((currentToasts) => [
       ...currentToasts,
-      { id: crypto.randomUUID(), message, variant },
+      { id, message, variant },
     ]);
 
     setMessage('');
