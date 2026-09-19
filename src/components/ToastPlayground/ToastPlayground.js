@@ -2,14 +2,13 @@ import React from 'react';
 
 import Button from '../Button';
 import ToastShelf from '../ToastShelf';
-import { ToastContext } from '../ToastProvider';
+import { VARIANT_OPTIONS } from '../Toast';
+import { useToasts } from '../ToastProvider';
 
 import styles from './ToastPlayground.module.css';
 
-const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
-
 function ToastPlayground() {
-  const { createToast } = React.useContext(ToastContext);
+  const { createToast } = useToasts();
 
   const [message, setMessage] = React.useState('');
   const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]);
@@ -50,6 +49,7 @@ function ToastPlayground() {
               className={styles.messageInput}
               value={message}
               onChange={(event) => setMessage(event.target.value)}
+              required
             />
           </div>
         </div>

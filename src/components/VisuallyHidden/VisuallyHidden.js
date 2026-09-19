@@ -32,7 +32,14 @@ const VisuallyHidden = ({
   }, []);
 
   if (forceShow) {
-    return <span className={styles.showWrapper}>{children}</span>;
+    return (
+      <span
+        className={`${className} ${styles.showWrapper}`}
+        {...delegated}
+      >
+        {children}
+      </span>
+    );
   }
 
   return (

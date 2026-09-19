@@ -1,9 +1,9 @@
 import React from 'react';
 
-function useKeydown(code, callback) {
+function useKeydown(key, callback) {
   React.useEffect(() => {
     function handleKeyDown(event) {
-      if (event.code === code) {
+      if (event.key === key) {
         callback(event);
       }
     }
@@ -13,7 +13,7 @@ function useKeydown(code, callback) {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [code, callback]);
+  }, [key, callback]);
 }
 
 export default useKeydown;
