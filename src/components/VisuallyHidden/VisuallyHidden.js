@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './VisuallyHidden.module.css';
 
-function VisuallyHidden({ children, className = '', ...delegated }) {
+function VisuallyHidden({ children, className, ...delegated }) {
   const [forceShow, setForceShow] = React.useState(false);
 
   // NOTE: dev-only affordance — holding Alt reveals hidden text so you can
@@ -31,11 +31,15 @@ function VisuallyHidden({ children, className = '', ...delegated }) {
     };
   }, []);
 
+  const wrapperClass = forceShow
+    ? styles.showWrapper
+    : styles.wrapper;
+
   return (
     <span
-      className={`${className} ${
-        forceShow ? styles.showWrapper : styles.wrapper
-      }`}
+      className={
+        className ? `${className} ${wrapperClass}` : wrapperClass
+      }
       {...delegated}
     >
       {children}
