@@ -18,8 +18,10 @@ function VisuallyHidden({ children, className, ...delegated }) {
       }
     }
 
-    function handleKeyUp() {
-      setForceShow(false);
+    function handleKeyUp(event) {
+      if (event.key === 'Alt') {
+        setForceShow(false);
+      }
     }
 
     window.addEventListener('keydown', handleKeyDown);
