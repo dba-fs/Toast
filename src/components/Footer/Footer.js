@@ -7,7 +7,11 @@ function Footer() {
     <footer className={styles.wrapper}>
       <p>
         This project is from{' '}
-        <a target="_blank" rel="noopener noreferrer" href="https://joyofreact.com">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://joyofreact.com"
+        >
           The Joy of React
         </a>
         , a comprehensive React.js course.

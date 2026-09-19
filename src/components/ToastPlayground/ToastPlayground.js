@@ -7,11 +7,13 @@ import { useToasts } from '../ToastProvider';
 
 import styles from './ToastPlayground.module.css';
 
+const DEFAULT_VARIANT = VARIANT_OPTIONS[0];
+
 function ToastPlayground() {
   const { createToast } = useToasts();
 
   const [message, setMessage] = React.useState('');
-  const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]);
+  const [variant, setVariant] = React.useState(DEFAULT_VARIANT);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -19,7 +21,7 @@ function ToastPlayground() {
     createToast(message, variant);
 
     setMessage('');
-    setVariant(VARIANT_OPTIONS[0]);
+    setVariant(DEFAULT_VARIANT);
   }
 
   return (
@@ -38,8 +40,7 @@ function ToastPlayground() {
         <div className={styles.row}>
           <label
             htmlFor="message"
-            className={styles.label}
-            style={{ alignSelf: 'baseline' }}
+            className={`${styles.label} ${styles.messageLabel}`}
           >
             Message
           </label>

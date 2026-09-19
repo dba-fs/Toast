@@ -49,11 +49,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
-  /*
-    This is the height when a row contains a text input.
-    We specify it to prevent a layout shift when `dismiss-after`
-    is toggled on/off.
-  */
+  /* Height of a row containing a text input, so rows line up evenly. */
   min-height: 3rem;
 }
 
@@ -63,25 +59,15 @@
   margin-bottom: 16px;
 }
 
-.titleMessageWrapper {
-  padding-bottom: 16px;
-  border-bottom: 1px dotted hsl(250deg 80% 80% / 0.5);
-  margin-bottom: 16px;
-}
-.titleMessageRow {
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-.titleMessageRow:not(:last-of-type) {
-  margin-bottom: 16px;
-}
-
 .label {
   flex-basis: 160px;
   text-align: right;
   font-weight: 700;
+}
+
+/* The message row is taller than one line, so its label sits at the top. */
+.messageLabel {
+  align-self: baseline;
 }
 
 .inputWrapper {
