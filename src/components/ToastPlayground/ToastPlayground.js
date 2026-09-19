@@ -2,17 +2,18 @@ import React from 'react';
 
 import Button from '../Button';
 import ToastShelf from '../ToastShelf';
-import { ToastContext } from '../ToastProvider';
+import { VARIANT_OPTIONS } from '../Toast';
+import { useToasts } from '../ToastProvider';
 
 import styles from './ToastPlayground.module.css';
 
-const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
+const DEFAULT_VARIANT = VARIANT_OPTIONS[0];
 
 function ToastPlayground() {
-  const { createToast } = React.useContext(ToastContext);
+  const { createToast } = useToasts();
 
   const [message, setMessage] = React.useState('');
-  const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]);
+  const [variant, setVariant] = React.useState(DEFAULT_VARIANT);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -20,13 +21,21 @@ function ToastPlayground() {
     createToast(message, variant);
 
     setMessage('');
-    setVariant(VARIANT_OPTIONS[0]);
+    setVariant(DEFAULT_VARIANT);
   }
 
   return (
     <div className={styles.wrapper}>
       <header>
-        <img alt="Cute toast mascot" src="/toast.png" />
+        <picture>
+          <source srcSet="/toast.avif" type="image/avif" />
+          <img
+            alt="Cute toast mascot"
+            src="/toast.png"
+            width={749}
+            height={1006}
+          />
+        </picture>
         <h1>Toast Playground</h1>
       </header>
 
@@ -39,8 +48,7 @@ function ToastPlayground() {
         <div className={styles.row}>
           <label
             htmlFor="message"
-            className={styles.label}
-            style={{ alignSelf: 'baseline' }}
+            className={`${styles.label} ${styles.messageLabel}`}
           >
             Message
           </label>
@@ -50,6 +58,7 @@ function ToastPlayground() {
               className={styles.messageInput}
               value={message}
               onChange={(event) => setMessage(event.target.value)}
+              required
             />
           </div>
         </div>
